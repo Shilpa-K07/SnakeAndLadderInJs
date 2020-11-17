@@ -1,1 +1,1 @@
-console.log("Welcome to snake and ladder problem !");
+let position = 0;
