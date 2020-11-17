@@ -18,7 +18,6 @@ var rollDieToGetNumber = () => {
  * @method randomValueBetweenOneToThree generates random number
  * @var option is set based on random number
  */
-
  var checkOption = (dieNumber) => {
         var option = null;
 		var randomNumber = randomValueBetweenOneToThree();
@@ -31,7 +30,8 @@ var rollDieToGetNumber = () => {
 
 			case 1:
 			option = "Ladder";
-			position += dieNumber;
+			if ( (position + dieNumber) <= MAX_POSITION )
+				position += dieNumber;
 			break;
 			
 			default:
@@ -43,7 +43,6 @@ var rollDieToGetNumber = () => {
 		}
 		console.log(" Option is : " +option);
 		console.log(" Current Position is : " +position+"\n");
-
  }
 
 /**
