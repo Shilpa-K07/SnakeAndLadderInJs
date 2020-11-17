@@ -69,6 +69,20 @@ var rollDieToGetNumber = () => {
  }
 
 /**
+ * @description Repeat till player reaches till winning position
+ * @var position  is compared with @var MAX_POSITION
+ * @method checkOption is used to check whether the option is noplay, ladder or snake
+ */
+var checkOptionTillMaxPosition = () =>{
+		while( position < MAX_POSITION )
+		{
+			var dieNumber = rollDieToGetNumber();
+			console.log("Number got from rolling die : " + dieNumber);
+			checkOption(dieNumber);
+		}
+    }
+
+/**
  * @description game with two players
  * @var player1Position is used to keep track of player1 position
  * @var player2Position is used to keep track of player2 position
@@ -84,8 +98,8 @@ var rollDieToGetNumber = () => {
 			checkOption(dieNumber , "Player1");
 
 			if ( player1Position == MAX_POSITION ){
-			console.log("Player1 Won !");		
-			console.log("Number of times the die was played by player1 to win the game : "+player1DiePlayCount);
+			console.log("Player1 Won !");
+			console.log("Number of times the die was played by player1 to win the game : "+player1DiePlayCount);		
 			break;	
 			}
 			dieNumber = rollDieToGetNumber();
@@ -98,5 +112,9 @@ var rollDieToGetNumber = () => {
 			console.log("Number of times the die was played by player2 to win the game : "+player2DiePlayCount);
 		}
 	}
+console.log("Game with single player ")
+checkOptionTillMaxPosition();
+console.log("Number of times the die was played to win the game is : "+diePlayCount);
 console.log("\nGame with two players");
 gameWithTwoPlayers();
+
