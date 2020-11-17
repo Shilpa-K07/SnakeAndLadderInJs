@@ -1,4 +1,5 @@
-let position = 0;
+var position = 0;
+const MAX_POSITION = 100;
 
 const randomValueBetweenOneToSix = () =>  Math.floor(Math.random()*10)%6+1;
 const randomValueBetweenOneToThree = () => Math.floor(Math.random()*10)%3;
@@ -34,13 +35,29 @@ var rollDieToGetNumber = () => {
 			break;
 			
 			default:
-			option = "Snake";
-			position -= dieNumber;
+            option = "Snake";
+			if ( (position - dieNumber) < 0 )
+				position = 0;			
+			else
+				position -= dieNumber;
 		}
 		console.log(" Option is : " +option);
 		console.log(" Current Position is : " +position+"\n");
 
  }
-var dieNumber = rollDieToGetNumber();
-checkOption(dieNumber);
 
+/**
+ * @description Repeat till player reaches till winning position
+ * @var position  is compared with @var maxPosition
+ * @method checkOption is used to check whether the option is noplay, ladder or snake
+ */
+var checkOptionTillMaxPosition = () =>{
+		while( position < MAX_POSITION )
+		{
+			var dieNumber = rollDieToGetNumber();
+			console.log("Number got from rolling die : " + dieNumber);
+			checkOption(dieNumber);
+		}
+    }
+
+checkOptionTillMaxPosition();
