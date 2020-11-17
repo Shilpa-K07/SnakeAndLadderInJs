@@ -1,4 +1,5 @@
 var position = 0;
+var diePlayCount = 0;
 const MAX_POSITION = 100;
 
 const randomValueBetweenOneToSix = () =>  Math.floor(Math.random()*10)%6+1;
@@ -10,6 +11,7 @@ const randomValueBetweenOneToThree = () => Math.floor(Math.random()*10)%3;
  */ 
 var rollDieToGetNumber = () => {
         var randomNumber = randomValueBetweenOneToSix();
+        diePlayCount ++;
 		return randomNumber;
 }
 
@@ -60,3 +62,4 @@ var checkOptionTillMaxPosition = () =>{
     }
 
 checkOptionTillMaxPosition();
+console.log("Number of times the die was played to win the game is : "+diePlayCount);
